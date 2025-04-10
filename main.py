@@ -1,28 +1,49 @@
-# Create a mobile phone class
-class MobilePhone:
+# Create a Hotel room class
+class HotelRoom:
     # constructor
-    def __init__(self,Brand,Model,StorageCapacity,Price):
-        # set the object's brand to the brand typed
-        self.Brand = Brand
-        # set the object's model to the model typed
-        self.Model = Model
-        # set the object's storage capacity to the storage capacity typed
-        self.StorageCapacity = StorageCapacity
-        # set the object's price to the price typed
-        self.Price = Price
+    def __init__(self,RoomNumber,RoomType,IsBooked):
+        # set the object's room number to the room number typed
+        self.RoomNumber = RoomNumber
+        # set the object's Room Type to the Room Type typed
+        self.RoomType = RoomType
+        # set the object's booked status to the book status typed
+        self.IsBooked = IsBooked
     
     #methods
-    # method to print details of the phone
-    def DisplayPhoneDetails(self):
-        # display phone details
-        print(f"Brand: {self.Brand}\nModel: {self.Model}\nStorage Capacity: {self.StorageCapacity}\nPrice: ${self.Price:.2f}\n")
-            
-# create the first phone object
-phoneObj1 = MobilePhone("Samsung","Vers 1.0","5KB",50)
-# create the second phone object
-phoneObj2 = MobilePhone("Samsung but BETTER","Vers 1.001","5.3KB",900)
+    # method to book a hotel room
+    def BookRoom(self):
+        # set the room to being booked
+        self.IsBooked = True
+        
+    # method to cancel a hotel room booking
+    def CancelBooking(self):
+        # set the room to not being booked
+        self.IsBooked = False
+        
+    # method to streamling displaying the availability
+    def DisplayAvailability(self):
+        if self.IsBooked == True:
+            print(f"The {self.RoomType} room {self.RoomNumber} is booked.\n")
+        else:
+            print(f"The {self.RoomType} room {self.RoomNumber} is available to book.\n")
+        
+        
+# create the first hotel room object
+room1 = HotelRoom("101","Single",False)
+# create the second hotel room object
+room2 = HotelRoom("102","Double",True)
 
-# display the details of the first phone object
-phoneObj1.DisplayPhoneDetails()
-# display the details of the second phone object
-phoneObj2.DisplayPhoneDetails()
+# display initial availability of room1
+room1.DisplayAvailability()
+# display initial availability of room2
+room2.DisplayAvailability()
+
+# book room 1
+room1.BookRoom()
+# unbook room 2
+room2.CancelBooking()
+
+# display new availability of room1
+room1.DisplayAvailability()
+# display new availability of room2
+room2.DisplayAvailability()
